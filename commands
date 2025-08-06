@@ -1,0 +1,50 @@
+# Running the feature engineering code
+
+python src/features/engineer.py --input data/processed/cleaned_house_data.csv --output data/processed/featured_house_data.csv --preprocessor models/trained/preprocessor.pkl
+
+# Running model training
+
+python src/models/train_model.py --config configs/model_config.yaml --data data/processed/featured_house_data.csv --models-dir models --mlflow-tracking-uri http://localhost:5555
+
+# Building docker images
+
+    # From main dir
+
+    docker image build -t fastapi .
+
+    # From streamlit_app
+
+    docker image build -t streamlit:v1 .
+
+# View images
+
+docker image ls
+
+# Run images
+
+docker run -idtP fastapi
+docker run -idtPp 8501:8501 streamlit:v1
+
+# View running containers
+
+docker ps
+
+# View container logs
+
+docker logs <container id from ps>
+
+# Build docker compose images
+
+docker compose build
+
+# Create and start docker composed containers
+
+docker compose up -d
+
+# View running composed containers
+
+docker compose ps
+
+# View composed contrainer logs
+
+docker compose logs
