@@ -74,4 +74,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/fastapi:{{ github.sha }}
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/fastapi:${{ github.sha }}
